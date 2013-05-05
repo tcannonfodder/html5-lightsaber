@@ -1,0 +1,206 @@
+#lightsaber{
+	margin: auto;
+	width: 40px;
+	margin-top: 10px;
+}
+
+#lightsaber.swinging{
+	-webkit-animation-duration: 5s;
+  -webkit-animation-name: swing;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+
+  animation-duration: 5s;
+  animation-name: swing;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#lightsaber #hilt{
+	height: 190px;
+	border: 2px solid black;
+  padding-top: 5px;
+  text-align: center;
+  border-top: 10px outset black;
+  border-bottom: 20px inset black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: gray;
+  background-image: linear-gradient(to right, #424242, #D9D9D9, #424242 );
+	-moz-border-bottom-colors: black;
+  -moz-border-left-colors: black;
+  -moz-border-right-colors: black;
+  -moz-border-top-colors: black;
+}
+
+#lightsaber #blade{
+	color: #12A8E2;
+	background-color: #12A8E2;
+	width: 30px;
+	margin: auto;
+	margin-top: 400px;
+	height: 0px;
+
+	border-top-left-radius: 10px;
+	border-top-right-radius:10px;
+
+  -webkit-animation-duration: 2s;
+  -webkit-animation-name: glow;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+
+  animation-duration: 2s;
+  animation-name: glow;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  -webkit-transition-property: height, margin-top;
+  -moz-transition-property: height, margin-top;
+  -o-transition-property: height, margin-top;
+  transition-property: height, margin-top;
+
+  -webkit-transition-duration: 900ms;
+  -moz-transition-duration: 900ms;
+  -o-transition-duration: 900ms;
+  transition-duration: 900ms;
+
+  -webkit-transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  -o-transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+	transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+#lightsaber #blade.ignited{
+	height: 400px;
+	margin: auto;
+	margin-top: 0px;
+}
+
+#button{
+	background-color: black;
+  border-color: #4C4C4C;
+  border-style: outset;
+  height: 50px;
+}
+
+#button.pressed{
+	border-style: inset;
+}
+
+.ridge{
+	width: 25px;
+	border-color: #4C4C4C;
+}
+
+#color_picker{
+	margin-top: 30px;
+	width: 15px;
+	height: 50px;
+	background-color: black;
+	border: 1px solid #4C4C4C;
+	border-radius: 3px;
+}
+
+#cap{
+	background-color: black;
+	height: 20px;
+	position: relative;
+	bottom:0;
+}
+
+@-webkit-keyframes glow{
+	from {
+		box-shadow: 0 0 5px;
+	}
+
+	to {
+		box-shadow: 0 0 20px;
+	}
+
+}
+
+@keyframes glow{
+	from {
+		box-shadow: 0 0 5px;
+	}
+
+	to {
+		box-shadow: 0 0 20px;
+	}
+}
+
+@-webkit-keyframes swing{
+	from{
+		-webkit-transform: rotate(40deg);
+		-webkit-transform-origin: -10px 80%;
+	}
+
+	25% {
+		-webkit-transform: rotate(60deg)
+	}
+
+	50% {
+		-webkit-transform: rotate(45deg);
+	}
+
+	60%{
+		-webkit-transform: rotate(-10deg);
+	}
+
+	75%{
+		-webkit-transform: rotate(+10deg);
+	}
+
+	80%{
+		-webkit-transform: rotate(-10deg);
+	}
+
+	90%{
+		-webkit-transform: rotate(-21deg);
+	}
+
+	to {
+		-webkit-transform: rotate(-40deg);
+		-webkit-transform-origin: 50% 80%;
+	}
+}
+
+
+@keyframes swing{
+	from{
+		transform: rotate(40deg);
+		transform-origin: -10px 80%;
+	}
+
+	25% {
+		transform: rotate(60deg)
+	}
+
+	50% {
+		transform: rotate(45deg);
+	}
+
+	60%{
+		transform: rotate(-10deg);
+	}
+
+	75%{
+		transform: rotate(+10deg);
+	}
+
+	80%{
+		transform: rotate(-10deg);
+	}
+
+	90%{
+		transform: rotate(-21deg);
+	}
+
+	to {
+		transform: rotate(-40deg);
+		transform-origin: 50% 80%;
+	}
+}
+

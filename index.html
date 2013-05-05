@@ -1,0 +1,88 @@
+<html>
+<head>
+	<title>Lightsaber Test</title>
+	<link rel="stylesheet" type="text/css" href="page.css">
+	<link rel="stylesheet" type="text/css" href="lightsaber.css">
+	<script type="text/javascript" src="modernizr.custom.js"></script>
+	<script type="text/javascript">
+		function ignite(){
+			var lightsaber = document.getElementById('lightsaber');
+			var ignite_sound = document.getElementById('ignite');
+			var hum_sound = document.getElementById('hum');
+			var off_sound = document.getElementById('off');
+
+			ignite_sound.addEventListener("ended", function() {
+				hum_sound.play();
+			});
+
+			off_sound.addEventListener("play", function(){
+				hum_sound.pause();
+			});
+
+			if(document.getElementById('blade').classList.contains('ignited')){
+				off_sound.play();
+			} else{
+				ignite_sound.play();
+			}
+			document.getElementById('blade').classList.toggle('ignited');
+			document.getElementById('button').classList.toggle('pressed');
+			lightsaber.classList.toggle('swinging');
+		}
+
+		function hilt_change(){
+			var color = document.getElementById('color_picker').value;
+			change_color(color);
+		}
+
+		function change_color(color){
+			var blade = document.getElementById('blade');
+			document.getElementById('color_picker').style.color = color;
+			blade.style.color = color;
+			blade.style.backgroundColor = color;
+		}
+
+		Modernizr.load([{
+      // Test if Input Color is supported using Modernizr
+      test: Modernizr.inputtypes.color,
+      // If colors are not supported, load the jscolor.js script
+      nope: 'jscolor.min.js',
+      // initialize jscolor once its loaded,
+      // because the builtin jscolor.install hook is bind to window.load,
+      // which has already happend
+      callback: function(id, testResult) {
+        jscolor.init();
+      }
+    }]);
+	</script>
+</head>
+<body>
+	<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+	<h1>HTML5/CSS3 Lightsaber</h1>
+	<p>A lightsaber built entirely from HTML5 and CSS3! No flash or extra plugins required. Click the button to ignite it, and use the picker at the base of the hilt to change the lightsaber's color!</p>
+	<p>
+		<a href="#" onclick="ignite();">Turn On/Off</a>
+		<span>Preset Colors:</span>
+		<a href="#" onclick="change_color('#12A8E2');">Obi-Wan Kenobi</a>
+		<a href="#" onclick="change_color('#73DC39');">Luke Skywalker</a>
+		<a href="#" onclick="change_color('#FE68FF');">Mace Windu</a>
+		<a href="#" onclick="change_color('#FCD40A');">Plo Kloon</a>
+		<a href="#" onclick="change_color('#D4383C');">Darth Vader</a>
+	</p>
+	<p>Created by <a href="http://twitter.com/codemonkeydev"  target="_blank">Thomas Cannon</a> to experiment with CSS animations and transformations. The fact it was created on <a href="http://en.wikipedia.org/wiki/Star_Wars_Day" target="_blank">Star Wars Day</a> started out as a coincidence.</p>
+
+	<div id="lightsaber">
+		<div id="blade">
+		</div>
+		<div id="hilt">
+			<button id="button" onclick="ignite();" ></button>
+			<hr class='ridge'/>
+			<hr class='ridge'/>
+			<hr class='ridge'/>
+			<input onchange='hilt_change();'  id='color_picker' type='color', value="#12A8E2" >
+		</div>
+		<audio id='ignite' src='ignite.ogg' preload >Your browser does not support audio!</audio>
+		<audio id='hum' src='hum.ogg' loop preload></audio>
+		<audio id='off' src='off.ogg' preload></audio>
+	</div>
+</body>
+</html>
